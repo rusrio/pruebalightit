@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/submitUsuarioProducto}" method="post">
+<h1>Insertar Usuario Producto</h1>
+<p>Descripción: <input type="text" name="descripcion" id="descripcion"/> </p>
+<p>Nombre: <input type="text" name="nombre" id="nombre"/> </p>
+<p>Imagen: <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg, image/jpg"/> </p>
+<input type="submit" value="insertar"/>
+<h5><a th:href="@{/tienda}">Volver</a></h5>
+</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="thymeleaf.com">
+<head>
+<meta charset="utf-8">
+<title>| Asigna un rol |</title>
+<link rel="stylesheet" type="text/css" href="/admin/insertarUsuario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<a class="volver" href="/gestion_usuarios">Volver <i class="fas fa-undo-alt"></i></a> 
+<div class="lightitmarca"><p>LightIt &reg;</p></div>
+<h1 id="mensaje">Inserta un usuario</h1>
+ <div class="header">
+  
+    
+ </div>
+     <div class="formulario">
+     <form th:action="@{/submitUsuario}" method="post">
+	 	<p>Username login: <input autocomplete="off" type="text" name="username" id="username"/> </p>
+	 	<p>Nombre: <input autocomplete="off" type="text" name="nombre" id="nombre"/> </p>
+	 	<p>Contraseña del usuario: <input autocomplete="off" type="password" name="password" id="password" /> </p>
+	<select name="selectedRol" id="rol">	
+    <option th:each="r : ${roles}" th:value="${r.idrol}" th:text="${r.nombre}"></option> 
+    </select>
+	  <input class="insertar" type="submit" value="insertar" />
+	</form>
+</div>
+</div>
+</body>
+<script src="https://kit.fontawesome.com/7bfebc882b.js" crossorigin="anonymous"></script>
+
+</html>

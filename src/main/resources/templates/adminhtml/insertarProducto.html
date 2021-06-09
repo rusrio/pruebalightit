@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="thymeleaf.com">
+<head>
+<meta charset="utf-8">
+<title>| Inserta un producto |</title>
+<link rel="stylesheet" type="text/css" href="/admin/insertar_producto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<a class="volver" href="/gestion_productos">Volver <i class="fas fa-undo-alt"></i></a> 
+<div class="lightitmarca"><p>LightIt &reg;</p></div>
+<h1 id="mensaje">Inserta un producto</h1>
+ <div class="header">
+  
+    
+ </div>
+     <div class="formulario">
+     <form th:action="@{/submitProducto}" method="post">
+	 	<p>Nombre: <input autocomplete="off" type="text" name="nombre" id="nombre"/> </p>
+		<p>Descripcion: <input autocomplete="off" type="text" name="descripcion" id="descripcion"/> </p>
+		<p>Titulo: <input autocomplete="off" type="text" name="titulo" id="titulo"/> </p>
+		<p>Fecha: <input autocomplete="off" type="text" name="fecha" id="fecha"/> </p>
+		<p>Precio: <input autocomplete="off" type="text" name="precio" id="precio"/> </p>
+		<p>URL de la imagen <input type="text" name="imagen" id="imagen"/> </p>
+	  <input class="insertar" type="submit" value="insertar"/>
+	</form>
+</div>
+</div>
+</body>
+<script src="https://kit.fontawesome.com/7bfebc882b.js" crossorigin="anonymous"></script>
+
+</html>

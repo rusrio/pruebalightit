@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LightIt | Galeria de colecciones</title>
+    <link rel="stylesheet" type="text/css" href="/tienda/tienda.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="contenido">
+       <header>
+          <div class="headertitulo"><p>LightIt &reg;</p></div>
+   		 <div class="panelusuario">  <a href="usuario"> <i sec:authorize="isAuthenticated()" class="fas fa-user"></i> </a> </div>
+   		 <div class="rutasusuario" sec:authorize="!isAuthenticated()"> 
+   		 <a href="/login" style="font-size: 1.3vw">Iniciar sesión</a> <a href="/index" style="font-size: 1.2vw">Volver <i class="fas fa-undo-alt"></i></a> 
+       </div>
+   		 <div class="rutasusuario" sec:authorize="isAuthenticated()"> 
+       <span>Hola, <span sec:authentication="name"></span> </span> <a href="mis_pedidos">Mis pedidos</a> <a href="/logout">Cerrar sesión</a> </div>
+        </header>
+       
+	 <div class="tituloanimacion">
+   		<div class='coleccionesanimacion' style='color: #7c4dff'>colecciones</div>
+		<div class='coleccionesanimacion' style='color: #0091ea'>colecciones</div>
+		<div class='coleccionesanimacion' style='color: #ff9100'>colecciones</div>
+		<div class='coleccionesanimacion' style='color: #ff1744'>colecciones</div>
+	 </div>
+     <div class="subtitulo"> <span>Échale un vistazo a nuestras colecciones</span></div>
+<div class="galeria">
+        <div class="grid-contenedor">
+            <div th:each="p : ${productos}" class="container">
+             <div class="img"> <img alt="${p.titulo}" th:src="${p.imagen}"> </div>
+             <div class="containerextra">
+              <span th:text="${p.nombre}"></span>
+              <span th:text="${p.precio +'€'}"></span>
+               <div class="iconoir">
+               <a style="color: black" th:href="@{/ver_producto(idproducto=${p.idproducto})}">
+                <i class="fas fa-arrow-up"></i>
+                </a>
+              </div>
+           </div>
+          </div>
+         </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/tienda/tienda.js"></script>
+ <script src="https://kit.fontawesome.com/7bfebc882b.js" crossorigin="anonymous"></script>
+</html>

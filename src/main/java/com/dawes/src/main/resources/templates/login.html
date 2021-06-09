@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="thymeleaf.com">
+<head>
+<meta charset="utf-8">
+<title>LightIt | Iniciar sesión</title>
+<link rel="stylesheet" type="text/css" href="/login/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <form th:action="@{/login}" method="post">
+  <div class="lightitmarca"><p>LightIt &reg;</p></div>
+    <h1 id="mensaje">Iniciar sesión</h1><small id="mensajepeq"><small th:if="${param.error}" class="alert alert-error">    
+                    Inicio de sesión incorrecto.</small> </small>
+    <div class="field">
+     <label>Nombre de usuario:  <input type="text" name="username" id="username" autocomplete="off"/> </label>
+   
+    </div>
+    <div class="field">
+     <label>Contraseña <input type="password" name="password"  id="password" autocomplete="new-password"/></label>
+      
+    </div>
+    <button type="submit" id="submit">Iniciar Sesión</button>
+    <p>¿No tienes cuenta? <a href="/registro">Haz click aquí</a></p>
+  </form>
+</div>
+</body>
+<script src="/login/login.js"></script>
+</html>

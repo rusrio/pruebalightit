@@ -1,0 +1,344 @@
+body{
+	background-color: black;
+	background-size: 100%;
+	overflow: inherit; 
+	overflow-X: hidden;
+}
+
+.contenido{
+	background-color: #fbf579;
+	height: 100%;
+    margin: 2%;
+    padding: 5%;
+}
+
+main{
+	height: auto;
+}
+
+/* HEADER 
+: #fa625f;
+
+*/
+header{
+	width: 100%;
+	background-color: #fa625f;
+	display: grid;
+	grid-template-columns: 25% 25% 25% 10% 15%;
+    grid-template-rows: 100%;
+}
+
+.headertitulo{
+	background: black;
+	padding-inline: 8%;
+}
+
+.headertitulo p{
+	height: auto;
+	font-size: 2em;
+	width: fit-content;
+	color: white;
+	padding-inline: 1%;
+	font-family: 'Inter', sans-serif;
+	text-transform: uppercase;	
+	margin-block-start: 28%;	
+}
+
+header a{
+
+	font-size: 4vw;
+	color: black;
+}
+
+.panelusuario{
+	background-color: black;
+	grid-column: 4;
+	display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.panelusuario i{
+	color: white;
+	transition:100ms;
+}
+
+i:hover{
+	transform: scale(1.1);
+	transition:100ms;
+}
+
+.rutasusuario{
+	display: flex;
+    flex-direction: column;
+    background-color: black;
+    justify-content: space-evenly;
+}
+
+.rutasusuario a{
+	text-align: left;
+	text-decoration: none;
+	font-size: 1vw;
+	color: white;
+	transition: 100ms;
+	font-family: 'Inter', sans-serif;
+}
+
+.rutasusuario span {
+	font-size: 1.2vw;
+	color: white;
+	font-family: 'Inter', sans-serif;
+}
+
+.rutasusuario > a:hover{
+	color: white;
+	transform: translateX(5px);
+	transition: 100ms;
+}
+
+i.fas.fa-undo-alt{
+	padding-left: 0.4vw;
+}
+
+/*TITULO ANIMACION*/
+
+.tituloanimacion{
+	display: grid;
+	grid-template-columns: 33% 0% 33%;
+    width: initial;
+    height: 140px;
+    position: relative;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    padding-top: 13%;
+    white-space: nowrap;
+}
+
+.coleccionesanimacion {
+    align-self: flex-end;
+	grid-column: 2;
+	display: flex;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 6vw;
+    -webkit-animation-name: wave;
+            animation-name: wave;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    font-family: 'Inter', sans-serif;
+    -webkit-text-stroke-width: 3px;
+    
+  }
+  
+  .coleccionesanimacion:nth-of-type(1) {
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+    -webkit-animation-delay: 0.55s;
+            animation-delay: 0.55s;
+  }
+  
+  .coleccionesanimacion:nth-of-type(2) {
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+  }
+  
+  .coleccionesanimacion:nth-of-type(3) {
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+    -webkit-animation-delay: 0.05s;
+            animation-delay: 0.05s;
+  }
+  
+  .coleccionesanimacion:nth-of-type(4) {
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+    -webkit-animation-delay: -0.2s;
+            animation-delay: -0.2s;
+  }
+  
+  @-webkit-keyframes wave {
+    40%, 50% {
+      transform: translate(-50%, -65%) scale(1.05);
+    }
+    0%, 90%, 100% {
+      transform: translate(-50%, -45%) scale(0.95);
+    }
+  }
+  
+  @keyframes wave {
+    40%, 50% {
+      transform: translate(-50%, -65%) scale(1.05);
+    }
+    0%, 90%, 100% {
+      transform: translate(-50%, -45%) scale(0.95);
+    }
+  }
+  
+  /*VISUALIZADOR*/
+  
+  .visualizador{
+    display: flex;
+    justify-content: flex-end;
+    margin-block: 10vh;
+   }
+   
+  .img_producto{
+    animation-duration: 1.6s;
+    animation-name: entradaizquierda;
+    width: 35vw;
+    padding-block: 2%;
+    transform: translateX(-9vw);
+    justify-self: end;
+    transition: 200ms;
+    border-radius: 1%;
+    }
+    
+    .img_producto img{
+    animation: animacion_boton 20s infinite;
+    transition: 100ms;
+    box-shadow: 4px 7px 13px #000000;
+    border-radius: 11%;
+    }
+    
+    .panel_compra{
+    box-shadow: 0px 5px 22px #000000;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 20% 20% 45% 15%;
+    flex-direction: column;
+    background-color: white;
+    justify-self: unset;
+    width: 37vw;
+    animation-duration: 1.6s;
+    animation-name: entradaderecha;
+    border-radius: 4%;
+    transition: 200ms;
+    align-items: center;
+    }
+    
+    .nombre{
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.7vw;
+    }
+    
+    .titulo{
+    grid-column: 2;
+    grid-row: 1;
+    align-self: self-end;
+    font-size: 1.1vw;
+    }
+    
+    .precio{
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 2.3vw;
+    align-self: self-end;
+    }
+    
+    .descripcion{
+    grid-column: 2;
+    width: 50%;
+    font-size: 1.02vw;
+    grid-row: 3;
+    }
+    
+    .boton_comprar{
+    grid-column: 2;
+    width: 70%;
+    text-align: center;
+    grid-row: 4;
+    }
+   
+
+  .boton_comprar > button{
+    
+      font-family: 'Inter', sans-serif;
+    font-size: 1.2em;
+    height: 2.9vw;
+    width: 9.2vw;
+    border-radius: 60px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    background-color: black;
+    cursor: pointer
+}
+
+button:hover{
+	transform: translateY(-2px);
+}
+  
+  
+  
+  @keyframes animacion_boton {
+      0% {   transform: scale(1.03); transition: 100ms;}
+      25% {  transform: scale(1); transition: 100ms;}
+      50% {  transform: scale(1.03); transition: 100ms; }
+     75% {   transform: scale(1); transition: 100ms; }
+     100%{   transform: scale(1.03); transition: 100ms;}
+  }
+    
+    .panel_compra > span{
+    color: black;
+    font-family: 'Inter', sans-serif;
+    }
+    
+
+@keyframes entradaderecha {
+  from {
+   transform: translateX(-90vw); 
+  }
+
+  to {
+   transform: translateX(0vw);
+  }
+}
+
+ img{ 
+  transition: 100ms;
+  display: block;
+  width: 100%;
+  height: auto;
+ }
+
+@keyframes entradaizquierda {
+  from {
+    transform: translateX(90vw);
+    opacity: 0.2;
+  }
+
+  to {
+  transform: translateX(-9vw);
+    
+    opacity: 1;
+  }
+}
+
+ img{ 
+  transition: 100ms;
+  display: block;
+  width: 100%;
+  height: auto;
+ }
+
+ 
+  
+  /*SCROLLBAR*/
+
+  body::-webkit-scrollbar {
+    width: 1em;
+    background-color: #600473;
+  }
+   
+  body::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: none;
+  }

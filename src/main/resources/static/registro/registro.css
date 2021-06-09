@@ -1,0 +1,158 @@
+body,
+html {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* Para la realizaci�n de el background, he usado https://www.gradient-animator.com/ */
+body {
+  background: linear-gradient(121deg, #d6ab30, #d3e522, #2ce11e, #1ad8a7, #208ee1, #7725cd, #dc21bf, #cd2628);
+  background-size: 1600% 1600%;
+  -webkit-animation: AnimationName 56s ease infinite;
+  -moz-animation: AnimationName 56s ease infinite;
+  animation: AnimationName 56s ease infinite;
+}
+
+.lightitmarca > p{
+	font-size: 2em;
+	text-transform: uppercase;
+  border-bottom: 5px solid white;
+  padding-bottom: 5%;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 70%}
+  50%{background-position:100% 31%}
+  100%{background-position:0% 70%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 70%}
+  50%{background-position:100% 31%}
+  100%{background-position:0% 70%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 70%}
+  50%{background-position:100% 31%}
+  100%{background-position:0% 70%}
+}
+
+body {
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  color: white;
+}
+
+.container {
+  width: 400px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+  max-width: 320px;
+  padding: 2rem 2rem 2rem 2rem;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 25em;
+}
+
+
+
+
+form h1 {
+  text-align: center;
+  margin: 0 0 0.25rem 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+form small {
+  display: block;
+  margin: 0 auto 1rem;
+  padding: 0;
+  font-size: 14px;
+}
+
+form .field {
+  display: flex;
+  flex-flow: column-reverse;
+  margin-bottom: 1em;
+}
+
+form label,
+form input {
+  transition:200ms;
+}
+
+form label {
+  opacity: 0;
+}
+
+form input {
+  padding: 10px 20px;
+  border: 4px solid white;
+  margin: 0 1.5rem;
+  background-color: transparent !important;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  text-transform: lowercase;
+}
+
+
+form input::placeholder {
+  color: white;
+  
+}
+
+form input:focus {
+  color: #3f4353;
+  font-weight: bold;
+  outline: 0;
+  border: 6px solid white;
+}
+
+form button {
+  border: 2px solid black;
+  padding: 0.85rem 1rem;
+  margin-top: 2rem;
+  background-color: #e9ebf3;
+  color: rgb(0, 0, 0);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  width: 65%;
+  position: absolute;
+  bottom: -20px;
+  right: 18%;
+  letter-spacing: 0.15em;
+  transition: 200ms;
+  font-family: 'Inter', sans-serif;
+}
+
+form button:hover {
+  transform: scale(1.1);
+  transition: 200ms;
+  cursor: pointer;
+  
+}
+
+form p {
+  font-size: 0.75rem;
+  line-height: 1.4rem;
+  margin: 0.5rem 1.5rem 1.75rem 1.5rem;
+}
+
+a{
+	color: white;
+	text-decoration: none;
+}
+
+a:hover{
+	border-bottom: 2px solid white;
+}

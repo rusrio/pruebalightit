@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="thymeleaf.com">
+<head>
+<meta charset="utf-8">
+<title>| Gestión de productos |</title>
+<link rel="stylesheet" type="text/css" href="/admin/gestion_productos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+ <div class="contenido">
+  <div class="lightitmarca"><p>LightIt &reg;</p> <a class="volver" href="/admin">Volver <i class="fas fa-undo-alt"></i></a> </div>
+    <h1 id="mensaje">Gestión de productos</h1>
+	<div class="tabla">
+	<table>
+			<thead>
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Imagen</th>
+					<th scope="col">Fecha</th>
+					<th scope="col" colspan="2">Acción</th>
+				</tr>
+			</thead>
+			<tbody>
+		<tr th:each="p: ${productos}">
+		<td th:text="${p.nombre}"></td>
+		<td th:text="${p.descripcion}"></td>
+		<td th:text="${p.precio}"></td>
+		<td th:text="${p.imagen}"></td>
+		<td th:text="${p.fecha}"></td>
+		<td><a th:href="@{/modificarProducto(idproducto=${p.idproducto})}">Modificar</a></td>
+		<td><a th:href="@{/eliminarProducto(idproducto=${p.idproducto})}">Eliminar</a></td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="insertarProducto"> <a href="/insertarProducto">Añadir un producto</a> <i class="far fa-save"></i> </div>
+</div>
+</div>
+</body>
+<script src="https://kit.fontawesome.com/7bfebc882b.js" crossorigin="anonymous"></script>
+
+</html>
