@@ -19,6 +19,23 @@ header{
 	grid-column-end:4;
 }
 
+.cerrar_sesion{
+	position: absolute;
+    display: flex;
+    padding-left: 80vw;
+    padding-top: 2%;
+    font-family: 'Press Start 2P';
+}
+
+.cerrar_sesion a{
+	color: black;
+	text-decoration: none;
+}
+
+.cerrar_sesion a:hover{
+	transform: translateY(1px);
+}
+
 .lightitmarca{
 	display: flex;
 	flex-direction: row;

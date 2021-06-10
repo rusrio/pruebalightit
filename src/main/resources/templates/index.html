@@ -12,6 +12,7 @@
 <body>
 <div class="contenedor">
     <header> <div class="lightitmarca"><p>LightIt &reg;</p> </div> </header>
+    <div sec:authorize="isAuthenticated()" class="cerrar_sesion"><a href="/logout">Cerrar sesión</a></div>
 	<div class="gif_mechero"><img src="/img/gif-homepage-unscreen.gif" alt=""></div>
 	<div class="sidebar_izq">
 	 <a href="/tienda">
@@ -30,7 +31,8 @@
       <div class="login"><img src="/img/login.png" alt="">
     <a sec:authorize="!isAuthenticated()" href="/login">Iniciar sesión</a>
     <a sec:authorize="!isAuthenticated()" href="/registro">Registrarse</a>
-    <a sec:authorize="isAuthenticated()" href="/usuario">Hola,<span sec:authentication="name"></span></a>
+    <a sec:authorize="hasRole('ADMIN')" href="/admin">Hola,<span sec:authentication="name"></span></a>
+    <a sec:authorize="hasRole('REGISTRADO')" href="/usuario">Hola,<span sec:authentication="name"></span></a>
     </div>
 </div>
  </body>

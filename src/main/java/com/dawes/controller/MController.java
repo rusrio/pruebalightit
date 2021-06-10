@@ -49,10 +49,6 @@ public class MController {
 	return "index";
 	}
 	
-	@GetMapping("/registro")
-	public String registro() {
-	return "registro";
-	}
 	
 	@GetMapping("/login")
 	public String login() {

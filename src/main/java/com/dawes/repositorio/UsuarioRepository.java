@@ -13,6 +13,8 @@ public interface UsuarioRepository extends CrudRepository<UsuarioVO, Integer> {
 
 	UserDetails findByUsername(String username);
 
+	UsuarioVO findByNombre(String nombre);
 
+	
 	
 }

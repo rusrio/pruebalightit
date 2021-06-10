@@ -80,5 +80,18 @@ public class ServicioUsuarioImpl implements ServicioUsuario, UserDetailsService 
 		return ur.findByUsername(username);
 	}
 
+	@Override
+	public UsuarioVO findByNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return ur.findByNombre(nombre);
+	}
+	
+	public UsuarioVO generar_nombre(UsuarioVO usuario) {
+		usuario.setNombre(usuario.getUsername());
+		return usuario;
+	}
+	
+
+
 	
 }

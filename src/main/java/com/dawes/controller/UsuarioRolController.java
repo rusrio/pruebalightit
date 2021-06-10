@@ -1,9 +1,12 @@
 package com.dawes.controller;
-import java.util.Optional;
+import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +20,7 @@ import com.dawes.modelo.UsuarioVO;
 import com.dawes.servicios.ServicioRol;
 import com.dawes.servicios.ServicioUsuario;
 import com.dawes.servicios.ServicioUsuarioRol;
+import com.sun.xml.bind.v2.runtime.output.Encoded;
 
 @Controller
 public class UsuarioRolController {
@@ -29,6 +33,15 @@ public class UsuarioRolController {
 	
 	@Autowired
 	ServicioUsuario su;
+	
+	@Bean
+	public BCryptPasswordEncoder BCryptPasswordEncode() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	public String encripta(String password) {
+		return BCryptPasswordEncode().encode(password);
+	}
 	
 	@GetMapping("/gestion_usuarios")
 	public String gestion_usuarios(Model modelo) {
@@ -75,6 +88,27 @@ public class UsuarioRolController {
 		su.deleteById(idusuario);
 		modelo.addAttribute("usuariorol", sur.findAll());
 		return "redirect:/gestion_usuarios";
+	}
+	
+	@GetMapping("/registro")
+	public String registro(Model modelo, String username, String nombre, String password) {
+		modelo.addAttribute("username",new UsuarioVO(0, username, nombre, password, LocalDate.now()));
+		return "registro";
+	}
+	
+	@PostMapping("/submitRegistro")
+	public String submitRegistro(@ModelAttribute UsuarioVO usuini, Model modelo) {
+		UsuarioVO usuario = usuini;
+		usuario.setUsername(usuario.getNombre());
+		usuario.setFechaRegistro(LocalDate.now());
+		usuario.setPassword(encripta(usuario.getContrasena_registro()));
+		RolVO rolselected = sr.findById(2).get();
+		su.save(usuario);
+		UsuarioRolVO usuariorol = new UsuarioRolVO(0,usuario,rolselected);
+		sur.save(usuariorol);
+		modelo.addAttribute("usuario", usuario); 
+		modelo.addAttribute("usuarioroles", sur.findAll());
+		return "redirect:/index";
 	}
 	
 	

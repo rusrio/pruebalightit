@@ -33,4 +33,8 @@ public interface ServicioUsuario {
 
 	UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 
+	UsuarioVO findByNombre(String nombre);
+	
+	UsuarioVO generar_nombre(UsuarioVO usuario);
+
 }

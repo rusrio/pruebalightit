@@ -1,23 +1,26 @@
 package com.dawes.controller;
-import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.dawes.modelo.ProductoVO;
+import com.dawes.modelo.CustomVO;
+import com.dawes.modelo.UsuarioCustomVO;
 import com.dawes.modelo.UsuarioProductoVO;
 import com.dawes.modelo.UsuarioVO;
+import com.dawes.servicios.ServicioCustom;
 import com.dawes.servicios.ServicioProducto;
 import com.dawes.servicios.ServicioUsuario;
+import com.dawes.servicios.ServicioUsuarioCustom;
 import com.dawes.servicios.ServicioUsuarioProducto;
 
 @Controller
@@ -30,6 +33,12 @@ public class UsuarioProductoController {
 	 
 	 @Autowired
 	ServicioProducto sprod;
+	 
+	 @Autowired
+	 ServicioCustom sc;
+	 
+	 @Autowired
+	 ServicioUsuarioCustom suc;
 	
 	
 	@GetMapping("/usuarioProducto")
@@ -38,24 +47,20 @@ public class UsuarioProductoController {
 		return "usuarioProductos";
 	}
 	 //CRUD
-	@GetMapping("/insertarUsuarioProducto")
-	public String insertar(Model modelo) {
-		modelo.addAttribute("usuarioproducto", new UsuarioProductoVO());
-		modelo.addAttribute("usuario", new ProductoVO());
-		modelo.addAttribute("producto", new ProductoVO());
+	@GetMapping("/insertarCustom")
+	public String insertarCustom(Model modelo) {
+		modelo.addAttribute("custom", new CustomVO());
 		return "insertarUsuarioProducto";
 	}
 	
-	@PostMapping("/submitUsuarioProducto")
-	@ResponseBody
-	public String submit(@ModelAttribute UsuarioProductoVO usuprod, Model modelo, int idusuarioproducto, int idusuario, ProductoVO producto, UsuarioVO usuario, Date fecha, @RequestParam("image") MultipartFile multipartFile) throws IOException {
-		
-		String imgnombre = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		producto.setImagen(imgnombre);
-		
-		usuario = susu.findById(idusuario).get();
-		susuprod.save(new UsuarioProductoVO(0, usuario, producto, fecha));
-		
+	@PostMapping("/submitCustom")
+	public String submitCustom(Model modelo, @ModelAttribute CustomVO custom, Authentication auth, String username) {
+		sc.save(custom);
+		username = auth.getUsername();
+		UsuarioVO usuariologeado = susu.findByNombre(username);
+        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UsuarioCustomVO usuariocustom = new UsuarioCustomVO(0,usuariologeado,custom,LocalDate.now());
+		suc.save(usuariocustom);
 		return "adminhtml/submitUsuarioProducto";
 	}
 	

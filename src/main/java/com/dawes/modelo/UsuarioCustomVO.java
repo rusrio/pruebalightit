@@ -1,5 +1,6 @@
 package com.dawes.modelo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -32,5 +33,5 @@ public class UsuarioCustomVO {
 	@JoinColumn(name = "idcustom")
 	private CustomVO custom;
 	
-	private Date fechapublicacion;
+	private LocalDate fechapublicacion;
 }

@@ -38,24 +38,26 @@ private int idusuario;
 @NotNull
 @Column(unique=true)
 private String username;
-private String nombre;
+private String nombre=username;
+
+/* HE DUPLICADO LOS ATRIBUTOS USERNAME Y PASSWORD CON TAL DE PODER MANIPULARLOS EN LOS CONTROLADORES, USERDETAILS INTERFIERE EN ESTE COMETIDO*/
 
 @NotNull
 private String password;
+
+@NotNull
+private String contrasena_registro;
 private LocalDate fechaRegistro;
 
-public UsuarioVO(int idusuario, String username, String nombre, String password, LocalDate fechaRegistro, List<UsuarioRolVO> roles) {
+public UsuarioVO(int idusuario, String username, String nombre, String password, LocalDate fechaRegistro) {
 	super();
 	this.idusuario = idusuario;
 	this.username = username;
 	this.nombre = username;
 	this.password = password;
 	this.fechaRegistro = fechaRegistro;
-	this.roles = roles;
 }
 
-@OneToMany(mappedBy = "rol", fetch = FetchType.EAGER)
-List<UsuarioRolVO> roles;
 
 @Override
 public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -27,15 +27,16 @@ public class MiSeguridad extends WebSecurityConfigurerAdapter {
 		return BCryptPasswordEncoder().encode(password);
 	}
 	
-	// Se programa la autentificación
+	// Se programa la autentificaciï¿½n
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.inMemoryAuthentication().withUser("usuario").password(encripta("temporal")).roles("REGISTRADO");
 		auth.inMemoryAuthentication().withUser("administrador").password(encripta("temporal")).roles("ADMIN");
+		auth.userDetailsService(sui);
 	}
 	
-	// Programar la autorización
+	// Programar la autorizaciï¿½n
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
