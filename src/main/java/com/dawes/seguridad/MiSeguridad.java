@@ -32,9 +32,6 @@ public class MiSeguridad extends WebSecurityConfigurerAdapter {
 	// Programar la autorizaci
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.requiresChannel()
-     			 .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-     			 .requiresSecure();
 		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/insertarUsuario/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/insertarUsuario/**").hasRole("ADMIN");
