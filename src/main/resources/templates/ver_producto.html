@@ -14,7 +14,7 @@
  <div class="contenido">
         <header>
           <div class="headertitulo"><p>LightIt &reg;</p></div>
-   		 <div class="panelusuario">  <a href="usuario"> <i sec:authorize="isAuthenticated()" class="fas fa-user"></i> </a> </div>
+   		 <div class="panelusuario">  <a sec:authorize="hasRole("REGISTRADO")" href="/usuario"> <i sec:authorize="hasRole("REGISTRADO")" class="fas fa-user"></i></a> <a sec:authorize="hasRole("ADMIN")" href="/admin"> <i sec:authorize="hasRole("ADMIN")" class="fas fa-user"></i></a> </div>
    		 <div class="rutasusuario" sec:authorize="!isAuthenticated()"> 
    		 <a href="/login" style="font-size: 1.3vw">Iniciar sesión</a> <a href="/tienda" style="font-size: 1.2vw">Volver a la tienda <i class="fas fa-undo-alt"></i></a> 
        </div>

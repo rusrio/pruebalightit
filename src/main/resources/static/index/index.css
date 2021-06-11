@@ -109,6 +109,10 @@ header{
     align-items: center;
 }
 
+.login a{
+	display: inline;
+}
+
 
 .sidebar_izq > a{
 	display: flex;

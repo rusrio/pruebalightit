@@ -57,6 +57,11 @@ public class MController {
 		return "adminhtml/panel_admin";
 	}
 	
+	@GetMapping("/about")
+	public String about() {
+		return "about";
+	}
+	
 	@GetMapping("/error403")
 	public String error403() {
 	return "error403";

@@ -2,6 +2,7 @@ package com.dawes.serviciosImpl;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dawes.modelo.CustomVO;
@@ -11,6 +12,7 @@ import com.dawes.servicios.ServicioCustom;
 @Service
 public class ServicioCustomImpl implements ServicioCustom {
 	
+	@Autowired
 	CustomRepository cr;
 	
 	@Override

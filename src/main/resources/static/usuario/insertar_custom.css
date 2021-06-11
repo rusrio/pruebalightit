@@ -11,7 +11,7 @@ html {
 	grid-template-columns: 20% 60% 20%;
 	width: 100%;
   	height: 100%;
-    background: linear-gradient(281deg, #ffffff, #e8e8e8, #faffeb, #efffeb, #def1ff, #f5e0ff);
+  	background-color: #fbf579;
     background-size: 1200% 1200%;
 
     -webkit-animation: animacionadmin 46s ease infinite;
@@ -61,7 +61,7 @@ i{
 
 
 h1{
-	font-family: 'Share Tech Mono', monospace;
+	font-family:  'Inter', sans-serif;
 	text-align: center;
     font-size: 3.5vw;
 
@@ -71,7 +71,7 @@ h1{
 
 span{
     color: black;
-    font-family: 'Share Tech Mono', monospace;
+    font-family:  'Inter', sans-serif;
 }
 
 span:hover{
@@ -126,7 +126,7 @@ a{
     margin-inline-end: 10%;
     margin-block-start: 17%;
     color: black;
-    font-family: 'Share Tech Mono', monospace;
+    font-family:  'Inter', sans-serif;
     text-decoration: none;
     width: fit-content;
     justify-self: self-end;

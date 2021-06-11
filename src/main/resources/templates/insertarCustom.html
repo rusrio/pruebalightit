@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>| Inserta un producto personalizado |</title>
-<link rel="stylesheet" type="text/css" href="/admin/insertar_producto.css">
+<link rel="stylesheet" type="text/css" href="usuario/insertar_custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
@@ -12,15 +12,14 @@
 </head>
 <body>
 <div class="container">
-<a class="volver" href="/gestion_productos">Volver <i class="fas fa-undo-alt"></i></a> 
+<a class="volver" href="/usuario">Volver <i class="fas fa-undo-alt"></i></a> 
 <div class="lightitmarca"><p>LightIt &reg;</p></div>
-<h1 id="mensaje">Inserta un producto</h1>
+<h1 id="mensaje">Inserta un producto personalizado</h1>
  <div class="header">
   
-    
  </div>
      <div class="formulario">
-     <form th:action="@{/submitUsuarioProducto}" method="post">
+     <form th:action="@{/submitCustom}" method="post">
 	 	<p>Nombre: <input autocomplete="off" type="text" name="nombre" id="nombre"/> </p>
 		<p>Descripcion: <input autocomplete="off" type="text" name="descripcion" id="descripcion"/> </p>
 		<p>Titulo: <input autocomplete="off" type="text" name="titulo" id="titulo"/> </p>
