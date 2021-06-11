@@ -108,7 +108,7 @@ public class UsuarioRolController {
 		sur.save(usuariorol);
 		modelo.addAttribute("usuario", usuario); 
 		modelo.addAttribute("usuarioroles", sur.findAll());
-		return "redirect:/index";
+		return "index";
 	}
 	
 	
