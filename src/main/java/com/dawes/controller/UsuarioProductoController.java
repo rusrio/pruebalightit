@@ -4,14 +4,12 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dawes.modelo.CustomVO;
 import com.dawes.modelo.UsuarioCustomVO;
@@ -29,10 +27,10 @@ public class UsuarioProductoController {
 	ServicioUsuarioProducto susuprod;
 	 
 	 @Autowired
-	ServicioUsuario susu;
+	 ServicioUsuario susu;
 	 
 	 @Autowired
-	ServicioProducto sprod;
+	 ServicioProducto sprod;
 	 
 	 @Autowired
 	 ServicioCustom sc;

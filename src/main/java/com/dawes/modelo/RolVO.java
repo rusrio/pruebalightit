@@ -28,7 +28,4 @@ public class RolVO{
 private int idrol;
 private String nombre;
 
-@OneToMany(mappedBy="rol",cascade= {CascadeType.ALL})
-private List<UsuarioRolVO> roles;
-
 }

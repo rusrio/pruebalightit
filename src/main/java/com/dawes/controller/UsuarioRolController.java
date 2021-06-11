@@ -92,7 +92,7 @@ public class UsuarioRolController {
 	
 	@GetMapping("/registro")
 	public String registro(Model modelo, String username, String nombre, String password) {
-		modelo.addAttribute("username",new UsuarioVO(0, username, nombre, password, LocalDate.now()));
+		modelo.addAttribute("username", new UsuarioVO());
 		return "registro";
 	}
 	

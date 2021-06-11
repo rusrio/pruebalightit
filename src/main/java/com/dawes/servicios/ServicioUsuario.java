@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import com.dawes.modelo.UsuarioVO;
 
@@ -30,6 +31,8 @@ public interface ServicioUsuario {
 	void deleteAll(Iterable<? extends UsuarioVO> entities);
 
 	void deleteAll();
+	
+	UserDetails findByUsername(String nombre);
 
 	UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 

@@ -16,27 +16,20 @@ import com.dawes.serviciosImpl.ServicioUsuarioImpl;
 public class MiSeguridad extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	ServicioUsuarioImpl sui;
+	ServicioUsuarioImpl su;
 	
-	@Bean
-	public BCryptPasswordEncoder BCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 	
-	public String encripta(String password) {
-		return BCryptPasswordEncoder().encode(password);
-	}
-	
-	// Se programa la autentificaci�n
+	// Se programa la autentificaci
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		auth.inMemoryAuthentication().withUser("usuario").password(encripta("temporal")).roles("REGISTRADO");
-		auth.inMemoryAuthentication().withUser("administrador").password(encripta("temporal")).roles("ADMIN");
-		auth.userDetailsService(sui);
+		auth.userDetailsService(su);
+		
 	}
 	
-	// Programar la autorizaci�n
+
+	
+	// Programar la autorizaci
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");

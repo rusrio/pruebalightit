@@ -28,10 +28,7 @@ public class MController {
 	
 	@Autowired
 	ServicioRol srol;
-	
-	@Autowired
-	ServicioUsuario susuario;
-	
+
 	@Autowired
 	ServicioUsuarioPedido susuariopedido;
 	
