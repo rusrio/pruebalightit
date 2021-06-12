@@ -1,15 +1,11 @@
 package com.dawes.controller;
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
-import org.springframework.security.core.AuthenticatedPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,6 +74,11 @@ public class CustomController {
 	@GetMapping("/usuario")
 	public String panel_usuario(Model modelo, Authentication auth){
 		
+		String nombreusulogeado = auth.getUsername();
+		UsuarioVO usuariologeado = susu.findByNombre(nombreusulogeado);
+		List<UsuarioCustomVO> usuariocustom = suc.findByUsuario(usuariologeado);
+		modelo.addAttribute("custom",usuariocustom);
+		modelo.addAttribute("usuario",usuariologeado);
 		
 		return "registrado/usuario";
 	}

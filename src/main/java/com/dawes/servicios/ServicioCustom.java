@@ -3,6 +3,7 @@ package com.dawes.servicios;
 import java.util.Optional;
 
 import com.dawes.modelo.CustomVO;
+import com.dawes.modelo.UsuarioVO;
 
 public interface ServicioCustom {
 
@@ -27,5 +28,5 @@ public interface ServicioCustom {
 	void deleteAll(Iterable<? extends CustomVO> entities);
 
 	void deleteAll();
-
+	
 }
