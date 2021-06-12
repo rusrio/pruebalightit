@@ -75,4 +75,11 @@ public class CustomController {
 		return "adminhtml/modificarUsuarioProducto";
 	}
 	
+	@GetMapping("/usuario")
+	public String panel_usuario(Model modelo, Authentication auth){
+		
+		
+		return "registrado/usuario";
+	}
+	
 }
