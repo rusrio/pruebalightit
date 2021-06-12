@@ -34,12 +34,12 @@ public class MiSeguridad extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/insertarUsuario/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/insertarUsuario/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/insertarUsuario/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/submitUsuario/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/submitProducto/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/insertarProducto/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/modificarProducto/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/submitUsuario/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/submitProducto/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/gestion_productos/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/gestion_usuarios/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/registrado/**").hasAnyRole("REGISTRADO","ADMIN");
 		http.formLogin().loginPage("/login");
 		http.exceptionHandling().accessDeniedPage("/error403");

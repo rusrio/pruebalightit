@@ -214,7 +214,9 @@ form input {
 	color: white;
 	background-color: black;
 	cursor: pointer;
-	flex: auto;
+    height: 7vh;
+    margin: 5%;
+    width: 8vw;
 }
 
 .insertar:hover{
