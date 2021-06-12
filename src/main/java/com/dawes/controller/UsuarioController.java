@@ -64,12 +64,5 @@ public class UsuarioController {
 		return "admin/modificarUsuario";
 	}
 */	
-	@GetMapping("/usuario")
-	public String panel_usuario(@RequestParam int idusuario, Model modelo){
-		UsuarioVO usuario = susuario.findById(idusuario).get();
-		modelo.addAttribute("customusuario", susucustom.findByUsuario(usuario));
-		modelo.addAttribute("usuario", usuario);
-		return "registrado/usuario";
-	}
 	
 }
