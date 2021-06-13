@@ -4,24 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.dawes.servicios.ServicioPedido;
-import com.dawes.servicios.ServicioPedidoProducto;
 import com.dawes.servicios.ServicioProducto;
 import com.dawes.servicios.ServicioRol;
 import com.dawes.servicios.ServicioUsuario;
-import com.dawes.servicios.ServicioUsuarioPedido;
 import com.dawes.servicios.ServicioUsuarioProducto;
 import com.dawes.servicios.ServicioUsuarioRol;
 
 @Controller
 public class MController {
 
-	@Autowired
-	ServicioPedido spedido;
-	
-	@Autowired
-	ServicioPedidoProducto spedidoproducto;
 	
 	@Autowired
 	ServicioProducto sproducto;
@@ -29,8 +20,6 @@ public class MController {
 	@Autowired
 	ServicioRol srol;
 
-	@Autowired
-	ServicioUsuarioPedido susuariopedido;
 	
 	@Autowired
 	ServicioUsuarioProducto susuarioproducto;
@@ -42,7 +31,7 @@ public class MController {
 	
 	@GetMapping("/index")
 	public String lineas(Model modelo) {
-	modelo.addAttribute("pedidos", spedido.findAll());
+
 	return "index";
 	}
 	

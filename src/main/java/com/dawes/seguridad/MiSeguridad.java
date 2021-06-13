@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.dawes.serviciosImpl.ServicioUsuarioImpl;
 
@@ -40,9 +41,11 @@ public class MiSeguridad extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/submitProducto/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/gestion_productos/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/gestion_usuarios/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/gestion_custom/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/registrado/**").hasAnyRole("REGISTRADO","ADMIN");
 		http.formLogin().loginPage("/login");
 		http.exceptionHandling().accessDeniedPage("/error403");
+      
 		http.logout().logoutSuccessUrl("/index");
 		http.csrf().disable();
 	}

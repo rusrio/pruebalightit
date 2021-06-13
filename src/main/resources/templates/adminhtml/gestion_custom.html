@@ -2,8 +2,8 @@
 <html lang="es" xmlns="thymeleaf.com">
 <head>
 <meta charset="utf-8">
-<title>| Gestión de pedidos |</title>
-<link rel="stylesheet" type="text/css" href="/admin/gestion_pedidos.css">
+<title>| Gestión de productos |</title>
+<link rel="stylesheet" type="text/css" href="/admin/gestion_productos.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
@@ -14,32 +14,27 @@
 <div class="container">
  <div class="contenido">
   <div class="lightitmarca"><p>LightIt &reg;</p> <a class="volver" href="/admin">Volver <i class="fas fa-undo-alt"></i></a> </div>
-    <h1 id="mensaje">Gestión de pedidos</h1>
+    <h1 id="mensaje" style="font-size: 3.1vw">Gestión de productos personalizados</h1>
 	<div class="tabla">
 	<table>
 			<thead>
 				<tr>
-					<th scope="col">Num. Pedido</th>
-					<th scope="col">Cliente</th>
-					<th scope="col">Productos</th>
-					<th scope="col">Precio</th>
-					<th scope="col">Fecha</th>
+					<th scope="col">Nombre usuario</th>
+					<th scope="col">Nombre custom</th>
+					<th scope="col">Imagen</th>
 					<th scope="col" colspan="2">Acción</th>
 				</tr>
 			</thead>
 			<tbody>
-		<tr th:each="up: ${usuariopedido}">
-		<td th:text="${up.pedido.idpedido}"></td>
-		<td th:text="${up.usuario.nombre}"></td>	
-		<td th:text="${up.pedido.precio}"></td>
-		<td th:text="${up.fechaPedido}"></td>
-		<td th:text="${up.fechaPedido}"></td>
-
+		<tr th:each="uc: ${usuariocustom}">
+		<td th:text="${uc.usuario.nombre}"></td>
+		<td th:text="${uc.custom.nombre}"></td>
+		<td th:text="${uc.custom.imagen}"></td>
+		<td><a th:href="@{/eliminarCustom(idusuariocustom=${uc.idusuariocustom})}">Eliminar</a></td>
 		</tr>
 		</tbody>
 	</table>
 	</div>
-	<div class="insertarProducto"> <a href="/insertarProducto">Añadir un producto</a> <i class="far fa-save"></i> </div>
 </div>
 </div>
 </body>

@@ -163,7 +163,7 @@ form {
     width: 84%;
     height: 38vh;
     max-width: min-content;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
     align-items: flex-end;
     justify-content: flex-start;
     align-content: center;

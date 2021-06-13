@@ -3,8 +3,11 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dawes.modelo.CustomVO;
+import com.dawes.modelo.ProductoVO;
 import com.dawes.modelo.UsuarioCustomVO;
 import com.dawes.modelo.UsuarioVO;
 import com.dawes.servicios.ServicioCustom;
@@ -42,45 +46,52 @@ public class CustomController {
 	@GetMapping("/insertarCustom")
 	public String insertarCustom(Model modelo) {
 		modelo.addAttribute("custom", new CustomVO());
-		return "insertarCustom";
+		return "registrado/insertarCustom";
 	}
 	
 	@PostMapping("/submitCustom")
-	public String submitCustom(Model modelo, @ModelAttribute CustomVO custom, Authentication auth, Principal principal) {
+	public String submitCustom(Model modelo, @ModelAttribute CustomVO custom) {
 		sc.save(custom);
-		String usernamelogeado = auth.getUsername();
-		UserDetails usuariologeado = susu.findByUsername(usernamelogeado);
-		String usuariosesion = usuariologeado.getUsername();
-		UsuarioVO usuario = susu.findByNombre(usuariosesion);
-		UsuarioCustomVO usuariocustom = new UsuarioCustomVO(0,usuario,custom,LocalDate.now());
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		UsuarioVO usuariologeado = susu.findByNombre(username);
+		UsuarioCustomVO usuariocustom = new UsuarioCustomVO(0,usuariologeado,custom,LocalDate.now());
 		suc.save(usuariocustom);
-		return "redirect:/insertarCustom";
+		return "redirect:/usuario";
 	}
 	
 	@GetMapping("/eliminarCustom")
-	public String eliminar(@RequestParam int idusuarioproducto, Model modelo){
-		suc.deleteById(idusuarioproducto);
+	public String eliminar(@RequestParam int idusuariocustom, Model modelo){
+		suc.deleteById(idusuariocustom);
 		modelo.addAttribute("usuarioproducto", suc.findAll());
-		return "redirect:/custom";
+		return "redirect:/gestion_custom";
 	}
 	
-	@GetMapping("/modificarCustom")
-	public String modificar(@RequestParam int idusuarioproducto, Model modelo){
-		UsuarioCustomVO usuprod=suc.findById(idusuarioproducto).get();
-		modelo.addAttribute("usuarioproducto", usuprod);
-		return "adminhtml/modificarUsuarioProducto";
-	}
 	
 	@GetMapping("/usuario")
 	public String panel_usuario(Model modelo, Authentication auth){
 		
-		String nombreusulogeado = auth.getUsername();
+		String nombreusulogeado = auth.getName();
 		UsuarioVO usuariologeado = susu.findByNombre(nombreusulogeado);
 		List<UsuarioCustomVO> usuariocustom = suc.findByUsuario(usuariologeado);
-		modelo.addAttribute("custom",usuariocustom);
+		modelo.addAttribute("usuariocustom",usuariocustom);
 		modelo.addAttribute("usuario",usuariologeado);
 		
 		return "registrado/usuario";
 	}
 	
+	@GetMapping("/gestion_custom")
+	public String gestion_custom(Model modelo) {
+	modelo.addAttribute("usuariocustom", suc.findAll());
+	return "adminhtml/gestion_custom";
+	}
+	
+	
+	@GetMapping("/ver_custom")
+	public String ver_producto(@RequestParam int idcustom, Model modelo, HttpServletRequest request) {
+		CustomVO cust = sc.findById(idcustom).get();
+		modelo.addAttribute("custom", cust);
+		
+		return "registrado/ver_custom";
+	}
 }

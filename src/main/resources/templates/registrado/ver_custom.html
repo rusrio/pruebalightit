@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LightIt |</title>
+    <link rel="stylesheet" type="text/css" href="/tienda/ver_producto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+ <div class="contenido">
+        <header>
+          <div class="headertitulo"><p>LightIt &reg;</p></div>
+   		 <div class="panelusuario">  <a sec:authorize="hasRole('REGISTRADO')" href="/usuario"> <i sec:authorize="hasRole('REGISTRADO')" class="fas fa-user"></i></a> <a sec:authorize="hasRole('ADMIN')" href="/admin"> <i sec:authorize="hasRole('ADMIN')" class="fas fa-user"></i></a> </div>
+   		 <div class="rutasusuario" sec:authorize="!isAuthenticated()"> 
+   		 <a href="/login" style="font-size: 1.3vw">Iniciar sesión</a> <a href="/tienda" style="font-size: 1.2vw">Volver a la tienda <i class="fas fa-undo-alt"></i></a> 
+       </div>
+   		 <div class="rutasusuario" sec:authorize="isAuthenticated()"> 
+       <span>Hola, <span sec:authentication="name"></span> </span> <a href="/">Cerrar sesión</a> </div>
+        </header>
+       
+	 <div class="tituloanimacion">
+   		<div th:text="${custom.nombre}" class='coleccionesanimacion' style='color: #7c4dff'></div>
+		<div th:text="${custom.nombre}" class='coleccionesanimacion' style='color: #0091ea'></div>
+		<div th:text="${custom.nombre}" class='coleccionesanimacion' style='color: #ff9100'></div>
+		<div th:text="${custom.nombre}" class='coleccionesanimacion' style='color: #ff1744'></div>
+	 </div>
+
+    <div class="visualizador">
+        <div class="panel_compra">
+        <span th:text="${custom.nombre}" class="nombre"></span> 
+        <span th:text="${custom.titulo}" class="titulo"></span> 
+       <span th:text="${custom.descripcion}" class="descripcion"></span>
+        <span class="precio">6.99€</span>
+        <div class="boton_comprar"> <button onclick="alert('Las compras no están implementadas :-), no es un producto real.')">Comprar</button> </div>
+        </div>
+        <div class="img_producto"> <img alt="" th:src="${custom.imagen}"> </div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="/tienda/ver_producto.js"></script>
+ <script src="https://kit.fontawesome.com/7bfebc882b.js" crossorigin="anonymous"></script>
+</html>
