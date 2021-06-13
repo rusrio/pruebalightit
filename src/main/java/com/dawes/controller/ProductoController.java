@@ -71,12 +71,9 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/ver_producto")
-	public String ver_producto(@RequestParam int idproducto, Model modelo, HttpServletRequest request) {
+	public String ver_producto(@RequestParam int idproducto, Model modelo) {
 		ProductoVO pr = sp.findById(idproducto).get();
 		modelo.addAttribute("producto", pr);
-		Principal principal = request.getUserPrincipal();
-		modelo.addAttribute("nombreusuario",principal);
-		
 		return "ver_producto";
 	}
 	
