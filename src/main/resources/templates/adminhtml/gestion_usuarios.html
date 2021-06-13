@@ -30,7 +30,6 @@
 		<td th:text="${ur.usuario.idusuario}"></td>
 		<td th:text="${ur.usuario.nombre}"></td>
 		<td th:text="${ur.rol.nombre}"></td>
-		<td><a th:href="@{/modificarUsuario(idusuario=${ur.usuario.idusuario})}">Modificar</a></td>
 		<td><a th:href="@{/eliminarUsuario(idusuario=${ur.usuario.idusuario})}">Eliminar</a></td>
 		</tr>
 		</tbody>
